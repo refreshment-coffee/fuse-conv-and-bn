@@ -27,14 +27,17 @@ def conv_kX_bn2conv_kX(conv2D_1,bn_1):
     conv_new=nn.Conv2d(in_channels=input_channel, out_channels=input_channel, kernel_size=kernel_size, stride=1, padding=padding_size, bias=True)
     conv_new.load_state_dict(OrderedDict(weight=W_new, bias=bias_new))
     return conv_new
+
+
+
 def conv_kX2conv_kY(conv2d_1, result_y):
     """
-    conv2d_1.weight .shape ==(output_channels, input_channels,X,X)  kernel_size ==X ,padding==1
+    conv2d_1.weight .shape ==(output_channels, input_channels,X,X)  kernel_size ==X ,padding==pad_old
 
     result:
-    conv2d_2.weight .shape ==(output_channels, input_channels,Y,Y)  kernel_size ==X ,padding==(Y-X)/2)
+    conv2d_2.weight .shape ==(output_channels, input_channels,Y,Y)  kernel_size ==X ,padding==pad_old+(Y-X)/2
 
-    1*1-->3*3
+    e.g. 1*1 conv -->3*3 conv
 
 
     """
@@ -63,6 +66,9 @@ def conv_kX2conv_kY(conv2d_1, result_y):
     else :
         conv2d_new.load_state_dict(OrderedDict(weight=weight_new))
     return conv2d_new
+
+
+
 def Identity2conv_kY(input_channel,result_kernel_size):
     output_channel=input_channel
     f1=torch.zeros((output_channel,input_channel,1,1))
