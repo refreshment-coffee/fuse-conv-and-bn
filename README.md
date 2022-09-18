@@ -1,8 +1,8 @@
 # fuse-conv-and-bn
 
-refer to repvgg
+re-parameter
 
-fuse conv and bn to conv 
+ 
 
 function: (in utils.py)
 1. fuse conv and bn to conv 
