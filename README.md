@@ -2,7 +2,7 @@
 
 re-parameter
 
- 
+refer to repVgg: https://arxiv.org/abs/2101.03697 
 
 function: (in utils.py)
 1. fuse conv and bn to conv 
